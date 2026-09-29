@@ -1,0 +1,451 @@
+/* ============================================================
+   DESIGN SYSTEM — bold / editorial
+   Shared tokens + base styles applied across the whole app.
+   Extends the visual language already used by the
+   "Core Engineering Projects" section (mono eyebrows, oversized
+   display type, high-contrast ink borders) to every page.
+
+   Loaded once, from main.css, so any page that already imports
+   main.css picks this up automatically.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Core ink / paper palette — shared by every page */
+  --ink: #14161a;
+  --muted: #5b606b;
+  --line: #d8dbe0;
+  --paper: #ffffff;
+  --bg: #f4f5f7;
+
+  /* Accent stays tied to the existing per-visit random hue,
+     used sparingly (underlines, tags, one highlight) rather
+     than as a wash, to keep the editorial feel high-contrast. */
+  --accent: var(--random-color);
+  --accent-ink: var(--random-color-text-overlay);
+
+  /* Type families */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+}
+
+/* ---------- Base type ---------- */
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+/* Page titles like "My Portfolio" / "My Interests" get the
+   flagship oversized-serif treatment instead of Bootstrap's
+   default display sizing. */
+.display-5.fw-bold {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+
+main h1.text-body-emphasis {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-3);
+}
+
+p, li, .fs-5, .fs-6 {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+}
+
+a.icon-link,
+a.icon-link:hover {
+  color: var(--ink);
+}
+
+hr {
+  background-color: var(--line);
+  height: 1px;
+  border: none;
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+/* ---------- Helpcenter hero ---------- */
+/* The hero uses a light-to-dark gradient background with white text
+   (set inline), but the global h1 color rule above would otherwise
+   force it dark, making it unreadable against the navy end of the
+   gradient. Scope a light-text override to this section only. */
+
+.helpcenter-hero h1 {
+  color: #ffffff;
+}
+
+/* ---------- Top header / navbar ---------- */
+
+header .navbar.navbar-dark.bg-dark {
+  background-color: var(--ink) !important;
+  border-bottom: 2px solid var(--ink);
+  box-shadow: none;
+}
+
+header .navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+/* Icon nav in the top header — a distinct section, set off from the
+   brand and from the login/cart icons by hairline dividers. */
+.top-icon-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-left: var(--space-6);
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.top-icon-nav a {
+  display: flex;
+  color: var(--paper);
+  opacity: 0.65;
+  transition: opacity 0.15s ease;
+}
+
+.top-icon-nav a:hover {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .top-icon-nav {
+    display: none;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  font-family: var(--font-sans);
+  border-top: 2px solid var(--ink) !important;
+  box-shadow: none !important;
+  background-color: var(--paper);
+}
+
+footer .navbar-brand,
+footer strong {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+footer .nav-link.text-body-secondary {
+  font-size: 14px;
+  color: var(--muted) !important;
+}
+
+/* ---------- Accordions (Interests page) ---------- */
+
+.accordion-button {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--bg);
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 var(--line);
+}
+
+/* ---------- Homepage hero ---------- */
+
+.hero-section {
+  background-color: var(--paper);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.hero-content {
+  max-width: 780px;
+}
+
+/* ---------- Hero / Design-notes row ---------- */
+/* Hero and the design-inspiration log sit side by side, each taking
+   half the row, sharing one fixed height so neither one drives the
+   other taller as the log grows. Plain white base throughout — the
+   accent color shows up only as the divider border and as text/link
+   accents, never as a background wash. */
+
+.hero-notes-row {
+  --hero-row-height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--paper);
+}
+
+.hero-notes-row .hero-wrapper {
+  height: var(--hero-row-height);
+  border-right: 2px solid var(--accent);
+}
+
+.hero-notes-row .hero-section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--paper);
+}
+
+.hero-notes-row .notes-section {
+  height: var(--hero-row-height);
+  overflow-y: auto;
+  background-color: var(--paper);
+}
+
+@media (max-width: 900px) {
+  .hero-notes-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-notes-row .hero-wrapper {
+    border-right: none;
+    border-bottom: 2px solid var(--accent);
+    height: auto;
+    min-height: 420px;
+  }
+
+  .hero-notes-row .notes-section {
+    height: auto;
+    max-height: var(--hero-row-height);
+  }
+}
+
+/* ---------- Design inspiration log ---------- */
+/* Same tokens as the hero and the project cards, but laid out as a
+   two-column log/ledger rather than a headline or a card grid, so it
+   reads as a related-but-distinct section. */
+
+#designnotes_mainpage {
+  padding: 10px 20px;
+}
+
+.notes-section {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.notes-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 var(--space-3);
+}
+
+.notes-rule {
+  height: 1px;
+  background-color: var(--line);
+  margin-bottom: var(--space-5);
+}
+
+.notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.notes-entry {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  column-gap: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--line);
+}
+
+.notes-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.notes-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  padding-top: 2px;
+}
+
+.notes-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 var(--space-3);
+}
+
+.notes-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+}
+
+.notes-link-item {
+  display: flex;
+  align-items: center;
+}
+
+.notes-link-category {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  margin-right: var(--space-2);
+}
+
+.notes-link-anchor {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 2px;
+}
+
+.notes-link-anchor:hover {
+  text-decoration-color: var(--accent);
+}
+
+@media (max-width: 620px) {
+  .notes-entry {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-2);
+  }
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--accent);
+  padding: 5px 10px;
+  margin-bottom: var(--space-5);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(32px, 4.8vw, 56px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-6);
+}
+
+.hero-headline a {
+  font-style: normal;
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+.hero-lines p {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.hero-lines a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+
+.hero-lines a:hover {
+  text-decoration-color: var(--accent);
+}
+
+.hero-cta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: var(--space-5);
+}
+
+.hero-cta a {
+  color: var(--ink);
+  font-weight: 700;
+}

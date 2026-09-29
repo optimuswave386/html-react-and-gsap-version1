@@ -1,0 +1,15 @@
+
+// SCSS variables for base values
+$primary-color-for-copyright-label: #484d54;
+$font-stack: 'Arial', sans-serif;
+
+:root {
+  // Define CSS custom properties using SCSS variables
+  --primary-color-for-copyright-label: #{$primary-color-for-copyright-label};
+  --font-family: #{$font-stack};
+}
+
+.copyright {
+    font-family: var(--font-stack);
+    color: var(--primary-color-for-copyright-label);
+}

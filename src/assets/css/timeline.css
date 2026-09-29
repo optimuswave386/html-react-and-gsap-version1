@@ -1,0 +1,28 @@
+.timeline {
+    margin: 10px 20px;
+    border-left: 1px solid #ccc;
+    overflow: visible;
+}
+
+.timelineevent {
+    display: flex;
+    margin: 20px 0px 0px 10px;
+    padding: 20px;
+    overflow: visible;
+}
+
+.timelinestar {  overflow: visible; align-self: center; }
+.timelinestar img { width: 30px; height: 30px;  margin-left: -46px; 
+    background-color: #f3f4f5; 
+    border-radius: 20px; border: 1px solid #ccc;  
+    box-shadow: 0px 0px 5px #aaa; 
+}
+
+.timelineeventdetails {
+    background-color: #f3f4f5;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+.timelinedate { display:block; width:100%; padding: 5px; }
+.timelinedescription { display:block; padding: 5px; }

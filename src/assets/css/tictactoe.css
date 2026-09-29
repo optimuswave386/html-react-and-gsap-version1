@@ -1,0 +1,58 @@
+.tictactoe-board {
+    display: inline-block;
+    background-color: white !important;
+}
+
+.game { 
+    display: flex;
+    flex-direction: row;
+    background-color: white !important; 
+}
+
+.status { 
+    width: 100%;
+    background-color: white !important; 
+    font-weight: bold; 
+    border: 1px solid rgb(217, 217, 217); 
+    margin-left: auto; 
+}
+.game-description {
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 14px;
+    max-width: 300px;
+}
+.game-board { margin-right: 0px; background-color: white !important; box-sizing: content-box; }
+.game-info { margin: 0px; padding: 20px; box-sizing: content-box; }
+.game-info ol { padding-left: 0px; margin-left: 0px; }
+.game-info button { margin: 1px; border: none; box-shadow: none; padding: 2px; white-space: nowrap;}
+
+.square, .square:focus, .square:active, .square:hover { 
+    display: inline;
+    line-height: 14px;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+    border: 1px solid gray;
+}
+
+.square:hover { 
+    background-color: gray;
+    transition: background-color 0.5s ease-in-out;
+ }
+
+.board-row {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.strike1 { 
+  position: absolute; display: inline;
+  transform: rotate(135deg)  ; /* Rotates the line by 45 degrees clockwise */
+  transform-origin: center; /* Sets the rotation origin to the center of the line */
+  z-index: 1;
+ }

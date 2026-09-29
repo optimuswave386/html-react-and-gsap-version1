@@ -1,0 +1,107 @@
+/* About hero — save as ../assets/css/about.css */
+
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  padding: var(--space-8) max(var(--space-7), calc((100% - 1400px) / 2 + var(--space-7)));
+}
+
+/* Decorative, CSS only: concentric rings fading toward the text, plus an accent block */
+.about-hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -140px;
+  width: 520px;
+  height: 520px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 22px, var(--ink) 22px 23px);
+  opacity: 0.14;
+  -webkit-mask-image: radial-gradient(circle, #000 35%, transparent 70%);
+          mask-image: radial-gradient(circle, #000 35%, transparent 70%);
+  pointer-events: none;
+}
+
+.about-hero::after {
+  content: "";
+  position: absolute;
+  right: var(--space-7);
+  bottom: 0;
+  width: 88px;
+  height: 88px;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+.about-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.about-hero-date {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  background: var(--paper);
+  padding: 5px 10px;
+  margin: 0 0 var(--space-5);
+}
+
+.about-hero-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(34px, 5.2vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+
+.about-hero-title a {
+  font-style: normal;
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+}
+
+.about-hero-text {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 60ch;
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--accent);
+}
+
+.about-hero-cta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.about-hero-cta a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .about-hero { padding: var(--space-7) var(--space-5); }
+  .about-hero::before { width: 320px; height: 320px; right: -120px; }
+  .about-hero::after { width: 52px; height: 52px; right: var(--space-4); }
+}

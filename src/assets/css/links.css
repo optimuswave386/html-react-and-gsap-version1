@@ -1,0 +1,155 @@
+/* ============================================================
+   LINKS PAGE — two-column layout
+   Save as ../assets/css/links.css (imported after main.css).
+   Uses only tokens from design-system.css.
+   ============================================================ */
+
+.links-layout {
+  --header-h: 3.1rem;                       /* matches body padding-top */
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: stretch;                     /* both columns always the same height */
+  min-height: calc(100vh - var(--header-h)); /* at least the full viewport... */
+  max-width: 1400px;                        /* ...and grows with the content */
+  margin: 0 auto;
+  background-color: var(--paper);
+}
+
+/* ---------- Column 1 ---------- */
+
+.links-main {
+  padding: var(--space-7) var(--space-7) var(--space-8);
+  border-right: 2px solid var(--accent);
+}
+
+.links-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  padding: 5px 10px;
+  margin-bottom: var(--space-5);
+}
+
+.links-intro {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 52ch;
+  margin-bottom: var(--space-7);
+}
+
+.links-group {
+  margin-bottom: var(--space-6);
+}
+
+.links-group-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: var(--space-2);
+  margin: 0;
+  border-bottom: 2px solid var(--ink);
+}
+
+.links-group-count {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Two-column grid of rows inside the group, collapsing to one on narrow widths */
+.links-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  column-gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links-list li {
+  border: 0;
+  padding: 0;
+  background: none;
+  white-space: normal;
+  overflow: visible;
+  font-size: inherit;
+}
+
+.links-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-2);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background-color 0.15s ease, padding-left 0.15s ease;
+}
+
+.links-row-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.links-row-arrow {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--muted);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.links-row:hover,
+.links-row:focus-visible {
+  background-color: var(--bg);
+  padding-left: var(--space-4);
+  box-shadow: inset 3px 0 0 var(--accent);
+  outline: none;
+}
+
+.links-row:hover .links-row-arrow,
+.links-row:focus-visible .links-row-arrow {
+  color: var(--ink);
+  transform: translate(2px, -2px);
+}
+
+/* ---------- Column 2 ---------- */
+
+.links-side {
+  background-color: var(--paper);
+  min-width: 0;
+}
+
+/* Let the notes flow at natural height here; the fixed 560px cap only
+   belongs to the homepage hero row. */
+.links-side .notes-section {
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .links-layout {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .links-main {
+    padding: var(--space-6) var(--space-5);
+    border-right: none;
+    border-bottom: 2px solid var(--accent);
+  }
+}

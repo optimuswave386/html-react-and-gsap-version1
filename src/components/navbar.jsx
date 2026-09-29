@@ -1,0 +1,162 @@
+import { React } from 'react'
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom'
+
+function Navbar() {
+
+    const navStyle = {
+        width: '3.7rem', 
+        height: '100%'
+    };
+
+  return (
+    <>
+
+        <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
+        <symbol id="home" viewBox="0 0 16 16">
+            <path
+            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"
+            ></path>
+        </symbol>
+        <symbol id="website" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+            <path d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v2H1V3a1 1 0 0 1 1-1zM1 13V6h4v8H2a1 1 0 0 1-1-1m5 1V6h9v7a1 1 0 0 1-1 1z"/>
+        </symbol>
+        <symbol id="speedometer2" viewBox="0 0 16 16">
+            <path
+            d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"
+            ></path>
+            <path
+            fillRule="evenodd"
+            d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"
+            ></path>
+        </symbol>
+        <symbol id="dashboard" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fillRule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
+        </symbol>
+        <symbol id="table" fill="currentColor" viewBox="0 0 16 16">
+            <path
+            d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"
+            ></path>
+        </symbol>
+        <symbol id="people-circle" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+        </symbol>
+        <symbol id="grid" fill="currentColor" viewBox="0 0 16 16">
+            <path
+            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"
+            ></path>
+        </symbol>
+        </svg>
+
+        <div
+            className="d-flex flex-column flex-shrink-0 bg-body-tertiary"
+            style={navStyle}
+        >
+            
+            <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
+            <li className="nav-item">
+                <Link
+                to="/"
+                className="nav-link py-3 border-bottom rounded-0"
+                aria-current="page"
+                title="Website"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                >
+                <svg
+                    className="bi pe-none"
+                    width="24"
+                    height="24"
+                    role="img"
+                    aria-label="Website" 
+                >
+                    <use xlinkHref="#website"></use>
+                </svg>
+                </Link>
+            </li>
+            <li>
+                <Link
+                to="/dashboard"
+                className="nav-link py-3 border-bottom rounded-0"
+                title="Dashboard"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                >
+                <svg
+                    className="bi pe-none"
+                    width="24"
+                    height="24"
+                    role="img"
+                    aria-label="Dashboard"
+                >
+                    <use xlinkHref="#dashboard"></use>
+                </svg>
+                </Link>
+            </li>
+            <li>
+                <Link
+                to="/orders"
+                className="nav-link py-3 border-bottom rounded-0"
+                title="Orders"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                >
+                <svg
+                    className="bi pe-none"
+                    width="24"
+                    height="24"
+                    role="img"
+                    aria-label="Orders"
+                >
+                    <use xlinkHref="#table"></use>
+                </svg>
+                </Link>
+            </li>
+            <li>
+                <Link
+                to="/products"
+                className="nav-link py-3 border-bottom rounded-0"
+                title="Products"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                >
+                <svg
+                    className="bi pe-none"
+                    width="24"
+                    height="24"
+                    role="img"
+                    aria-label="Products"
+                >
+                    <use xlinkHref="#grid"></use>
+                </svg>
+                </Link>
+            </li>
+            <li>
+                <Link
+                to="/about"
+                className="nav-link py-3 border-bottom rounded-0"
+                title="About"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                >
+                <svg
+                    className="bi pe-none"
+                    width="24"
+                    height="24"
+                    role="img"
+                    aria-label="About"
+                >
+                    <use xlinkHref="#people-circle"></use>
+                </svg>
+                </Link>
+            </li>
+            </ul>
+
+        </div>
+
+    </>
+  )
+}
+
+export default Navbar

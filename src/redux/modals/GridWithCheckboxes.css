@@ -1,0 +1,26 @@
+grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+
+.grid-item {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.grid-item.selected {
+  background-color: #e0f7fa; /* Highlight selected items */
+  border-color: #00bcd4;
+}
+
+.selected-info {
+  grid-column: 1 / -1; /* Span across all columns */
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
