@@ -2,6 +2,9 @@
 
 A personal website built with React that combines three things in one place: a **storefront** for books and electronics, a **portfolio** of projects, and an **about** section with background on the creator. It also includes a user account area with a dashboard and order history, and a help center for support requests.
 
+<img width="695" height="633" alt="Screenshot 2026-09-29 at 12 46 29 AM" src="https://github.com/user-attachments/assets/8ee538ff-3d64-497e-a8d5-a3d6a5709222" />
+
+
 ## Features
 
 - **Storefront**: browse products, add items to a cart, and check out
