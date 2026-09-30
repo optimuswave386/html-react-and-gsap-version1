@@ -2,9 +2,6 @@
 
 A personal website built with React that combines three things in one place: a **storefront** for books and electronics, a **portfolio** of projects, and an **about** section with background on the creator. It also includes a user account area with a dashboard and order history, and a help center for support requests.
 
-<img width="695" height="633" alt="Screenshot 2026-09-29 at 12 46 29 AM" src="https://github.com/user-attachments/assets/8ee538ff-3d64-497e-a8d5-a3d6a5709222" />
-
-
 ## Features
 
 - **Storefront**: browse products, add items to a cart, and check out
@@ -51,6 +48,12 @@ VITE_EXPRESSAPI_URL=http://localhost:3000/
 ```
 
 Keep the trailing slash: the app appends routes such as `user/login` directly to this value.
+
+```env
+VITE_EXPRESSAPI_URL_WITHOUT_SLASH=http://localhost:3000
+```
+Ditch the forward slash where the app uses routes such as `/cart`
+
 
 ### Run the development server
 

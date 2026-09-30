@@ -5,7 +5,7 @@ export const getNotes = createAsyncThunk(
   'designnotes/getNotes',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3000/dn/getNotes');
+      const response = await fetch(import.meta.env.VITE_EXPRESSAPI_URL + 'dn/getNotes');
       if (!response.ok) {
         throw new Error('Server error occurred');
       }

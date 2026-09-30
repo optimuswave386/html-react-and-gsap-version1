@@ -8,8 +8,8 @@ class QuoteCard_formatted extends React.Component {
     }
     async componentDidMount() {
       try {
-        const response = await axios.get('http://localhost:3000/randomquote'); //array
-        //const response = await axios.get('http://localhost:3000/get-quote'); //not an array
+        const response = await axios.get(import.meta.env.VITE_EXPRESSAPI_URL + 'randomquote'); //array
+        //const response = await axios.get(import.meta.env.VITE_EXPRESSAPI_URL + 'get-quote'); //not an array
         //console.log('Fetched data in DataFetcher:', response.data);
         this.setState({ data: response.data[0] });
         //console.log(`Quote is: ${response.data._id}`);

@@ -1,5 +1,5 @@
 import { React, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import DesignNotes from './designNotes';
@@ -29,7 +29,7 @@ function Header() {
     useEffect(() => {
         async function fetchCartCount() {
             try {
-                const response = await axios.get('http://localhost:3000/cart');
+                const response = await axios.get(import.meta.env.VITE_EXPRESSAPI_URL + 'cart');
                 dispatch(setCartCount(response.data.length));
             } catch (error) {
                 console.error('Error fetching cart count:', error);

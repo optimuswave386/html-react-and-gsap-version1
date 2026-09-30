@@ -8,7 +8,7 @@ import FooterForDashboardPage from '../components/footerForDashboardPage.jsx'
 import { setCartCount } from '../redux/cartSlice.jsx';
 import '../assets/css/pageHero.css';
 
-const API = 'http://localhost:3000';
+const API = import.meta.env.VITE_EXPRESSAPI_URL_WITHOUT_SLASH;
 const authHeaders = () => ({ headers: { authorization: `Bearer ${localStorage.getItem('authToken')}` } });
 
 export default function Checkout() {

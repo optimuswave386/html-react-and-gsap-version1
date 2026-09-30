@@ -6,7 +6,7 @@ import HeaderForOrdersPage from '../components/headerForOrdersPage.jsx'
 import FooterForDashboardPage from '../components/footerForDashboardPage.jsx'
 import axios from 'axios';
 
-const API = 'http://localhost:3000';
+const API = import.meta.env.VITE_EXPRESSAPI_URL_WITHOUT_SLASH; 
 
 const Table = ({ theadData, tbodyData }) => {
   return (

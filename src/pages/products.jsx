@@ -18,7 +18,7 @@ function Products() {
   useEffect( () => {
     
     async function fetchProducts() {
-      await axios.get('http://localhost:3000/product/getallproductsfromdatabase/' + productsPerPage)
+      await axios.get(import.meta.env.VITE_EXPRESSAPI_URL + 'product/getallproductsfromdatabase/' + productsPerPage)
         .then(response => {
           // console.log('Products fetched:', response.data);
           // Handle the fetched products data as needed
@@ -38,7 +38,7 @@ function Products() {
     console.log(`Adding product ${productId} to cart`);
 
     //check if product already in cart
-    const existingCartItem = await axios.get(`http://localhost:3000/cart/check/${productId}`)
+    const existingCartItem = await axios.get(import.meta.env.VITE_EXPRESSAPI_URL + `cart/check/${productId}`)
       .then(response => {
         return response.data;
       })
@@ -56,7 +56,7 @@ function Products() {
     if (!product) return;
 
     try {
-      await axios.post('http://localhost:3000/cart', {
+      await axios.post(import.meta.env.VITE_EXPRESSAPI_URL + 'cart', {
         id: productId,
         productId: productId,
         name: product.name,

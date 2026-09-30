@@ -42,7 +42,7 @@ function Helpcenter() {
         tryContactInformationVerification(contactInfoEmailaddress, issueDesc);
         
         //Post the support request to the server
-        axios.post('http://localhost:3000/log-support-request', {
+        axios.post(import.meta.env.VITE_EXPRESSAPI_URL + 'log-support-request', {
           contactEmail: contactInfoEmailaddress,
           issueDescription: issueDesc
         })

@@ -22,7 +22,7 @@ function FooterSubscribeBox() {
     setMessage('')
     try {
       // server endpoint that sends the email (nodemailer), unchanged
-      await Axios.post('http://localhost:3000/subscribe-with-email', { SubscriberEmail: email })
+      await Axios.post(import.meta.env.VITE_EXPRESSAPI_URL + 'subscribe-with-email', { SubscriberEmail: email })
       setEmail('')
       setStatus('success')
       setMessage('Thank you for subscribing!')

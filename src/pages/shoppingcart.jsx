@@ -39,7 +39,7 @@ function ShoppingCart() {
         // Simulate fetching cart item count from an API or state management
         const fetchCartItemCount = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/cart');        
+                const response = await axios.get(import.meta.env.VITE_EXPRESSAPI_URL + 'cart');        
                 console.log("Fetch cart item count", response.data.length);
                 const count = response.data.length;
                 setCartItemCount(cartItemCount + count); // Example: setting it to 2 items
@@ -54,7 +54,7 @@ function ShoppingCart() {
 
     const handleRemoveProduct = async (productId) => {
       try {
-          await axios.delete(`http://localhost:3000/cart/${productId}`);
+          await axios.delete(import.meta.env.VITE_EXPRESSAPI_URL + `cart/${productId}`);
           // After successful deletion, update the cart item count and items
           setCartItemCount(prevCount => prevCount - 1);
           dispatch(decrementCartCount());
@@ -106,7 +106,7 @@ A curated list of books and electronics items are available in the products sect
                                                     <small className="text-muted">&nbsp;Quantity: <select id="quantity" name="quantity" defaultValue={products.quantity} onChange={async (e) => {
                                                                                                       const newQuantity = parseInt(e.target.value);
                                                                                                       try {
-                                                                                                          await axios.patch(`http://localhost:3000/cart/${products.id}`, {
+                                                                                                          await axios.patch(import.meta.env.VITE_EXPRESSAPI_URL + `cart/${products.id}`, {
                                                                                                               quantity: newQuantity
                                                                                                           });
                                                                                                           // Update the cart items state to reflect the new quantity

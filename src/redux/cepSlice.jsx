@@ -5,7 +5,7 @@ export const getProjects = createAsyncThunk(
   'cep/getProjects',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3000/cep/getProjects');
+      const response = await fetch(import.meta.env.VITE_EXPRESSAPI_URL + 'cep/getProjects');
       if (!response.ok) {
         throw new Error('Server error occurred');
       }
