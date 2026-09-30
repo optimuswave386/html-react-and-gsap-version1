@@ -9,6 +9,7 @@ import { setCartCount } from '../redux/cartSlice.jsx';
 import '../assets/css/pageHero.css';
 
 const API = 'http://localhost:3000';
+const authHeaders = () => ({ headers: { authorization: `Bearer ${localStorage.getItem('authToken')}` } });
 
 export default function Checkout() {
 
@@ -71,7 +72,7 @@ export default function Checkout() {
       const intentResponse = await axios.post(`${API}/payment/create-payment-intent`, {
         items: orderItems,
         customer
-      });
+      }, authHeaders());
       if (intentResponse.data && intentResponse.data.paymentIntentId) {
         paymentIntentId = intentResponse.data.paymentIntentId;
       }
@@ -86,7 +87,7 @@ export default function Checkout() {
         customer,
         paymentIntentId,
         paymentStatus: 'paid'
-      });
+      }, authHeaders());
 
       await axios.delete(`${API}/cart`);
 
@@ -95,7 +96,10 @@ export default function Checkout() {
       dispatch(setCartCount(0));
     } catch (error) {
       console.error('Error placing order:', error);
-      setOrderError('Something went wrong while placing your order. Please try again.');
+      const expired = error.response && [401, 403].includes(error.response.status);
+      setOrderError(expired
+        ? 'Your session has expired. Please log in again to place your order.'
+        : 'Something went wrong while placing your order. Please try again.');
     } finally {
       setPlacingOrder(false);
     }

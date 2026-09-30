@@ -39,7 +39,7 @@ function HeaderforAboutPage() {
         </p>
 
         <p className="about-hero-cta diagonal-reveal">
-          Any questions? Feel free to <Link to="/helpcenter">ask here</Link>.
+          Any questions? See my <Link to="/myresume">resume</Link> or <Link to="/portfolio">portfolio</Link> instead!
         </p>
       </div>
     </section>

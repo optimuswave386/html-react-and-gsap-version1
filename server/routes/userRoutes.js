@@ -13,9 +13,21 @@ router.post('/login', userController.loginUser);
 // register a new user
 router.post('/register', userController.registerUser);
 
+// route is /user/forgot-password
+// email a password reset link
+router.post('/forgot-password', userController.forgotPassword);
+
+// route is /user/reset-password
+// set a new password using the emailed token
+router.post('/reset-password', userController.resetPassword);
+
 // verify user authorization token
 // This path is actually /user/auth/<email> for zero trust authorization
 router.post('/auth/:email', userController.verifyUserAuthorizationToken);
+
+// Is the logged-in user an admin? Must sit above the '/:id' route below.
+// This path is actually /user/is-admin
+router.get('/is-admin', authHandler, userController.checkAdmin);
 
 // Authenticated based on authorization token issued after login
 // get user profile on protected route with auth middleware

@@ -19,7 +19,7 @@ const TECHSTACK = [
 
 const FEATURED = [
   { label: 'Interests', to: '/interests' },
-  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Notes', to: '/links' },
   { label: 'Products', to: '/products' }, // new
   { label: 'Helpcenter', to: '/helpcenter' },
   { label: 'About', to: '/about' },
@@ -75,7 +75,7 @@ function Footer() {
             </div>
 
             <div id="footer-ul-three" className="footer-col">
-              <Link to="/myresume" className="footer-heading">Featured</Link>
+              <Link to="/portfolio" className="footer-heading">Featured</Link>
               <ul className="footer-list">
                 {FEATURED.map(({ label, to }) => (
                   <li key={to}><Link to={to} className="footer-link">{label}</Link></li>

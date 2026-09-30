@@ -177,7 +177,8 @@ function Dashboard() {
   useEffect(() => {
     async function fetchOrders() {
       try {
-        const response = await axios.get('http://localhost:3000/payment/orders');
+        const response = await axios.get('http://localhost:3000/payment/orders',
+          { headers: { authorization: `Bearer ${localStorage.getItem('authToken')}` } });
         setOrders(response.data || []);
       } catch (error) {
         console.error('Error fetching orders for dashboard:', error);

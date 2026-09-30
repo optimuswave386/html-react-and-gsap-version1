@@ -60,7 +60,7 @@ export default function CoreEngineeringProjects() {
           ))}
         </div>
 
-          <div className="cep-registry p-4">
+          <div className="cep-registry">
               { loading && <h4>Loading projects...</h4> }
               { error && <h4>Error: {error}</h4> }
               ACTIVE REGISTRY [{completed} / {cep.length} COMPLETED]

@@ -5,13 +5,20 @@ import axios from 'axios';
 import DesignNotes from './designNotes';
 import HeaderforAboutPage from './headerForAboutPage.jsx'
 import { setCartCount } from '../redux/cartSlice.jsx';
-import { logout } from '../redux/authSlice.jsx';
+import { logout, checkAdmin } from '../redux/authSlice.jsx';
 
 function Header() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isLoggedIn = useSelector(state => state.auth.isAuthenticated);
+    const isAdmin = useSelector(state => state.auth.isAdmin);
+    const adminLoaded = useSelector(state => state.auth.adminLoaded);
+
+    // After a refresh the token is still stored but isAdmin starts false, so re-verify with the server.
+    useEffect(() => {
+        if (isLoggedIn && !adminLoaded) dispatch(checkAdmin());
+    }, [isLoggedIn, adminLoaded, dispatch]);
 
     function handleLogout() {
         dispatch(logout());
@@ -96,7 +103,7 @@ function Header() {
                         <strong>A website</strong>
                     </a> */}
 
-                    {isLoggedIn && (
+                    {isAdmin && (
                     <nav className="top-icon-nav" aria-label="Site sections">
                             <Link to="/" title="Website" aria-label="Website">
                                 <svg width="20" height="20" role="img"><use xlinkHref="#website"></use></svg>

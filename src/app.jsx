@@ -17,7 +17,7 @@ import Project2 from './components/portfolioProject2.jsx'
 import Project3 from './components/portfolioProject3.jsx'
 import Project4 from './components/portfolioProject3.jsx'
 import Index from './index.jsx'
-import { Login, Register, ForgotPassword } from './pages/auth.jsx'
+import { Login, Register, ForgotPassword, ResetPassword } from './pages/auth.jsx'
 import LoginProtectedRoute from './components/loginProtectedRoute.jsx'
 import ErrorBoundary from './components/errorBoundary.jsx'
 
@@ -38,13 +38,15 @@ export default function App() {
       <ErrorBoundary>
         <Routes>
           <Route index path="/" element={<Index />} />
-          <Route element={<LoginProtectedRoute />}>
+          <Route element={<LoginProtectedRoute adminOnly />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/orders" element={<Orders />} />
           </Route>
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<ShoppingCart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route element={<LoginProtectedRoute />}>
+            <Route path="/checkout" element={<Checkout />} />
+          </Route>
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio/*" element={<Portfolio />}>
@@ -59,6 +61,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ErrorBoundary>

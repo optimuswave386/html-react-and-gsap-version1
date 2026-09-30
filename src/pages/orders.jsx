@@ -60,7 +60,8 @@ function Orders() {
   useEffect(() => {
     async function fetchOrders() {
       try {
-        const response = await axios.get(`${API}/payment/orders`);
+        const response = await axios.get(`${API}/payment/orders`,
+          { headers: { authorization: `Bearer ${localStorage.getItem('authToken')}` } });
         setOrders(response.data || []);
       } catch (error) {
         console.error("Error fetching orders:", error);

@@ -1,6 +1,6 @@
 // src/pages/auth.jsx — sign in, register and forgot password, one file, three routes.
 import { useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../redux/authSlice.jsx'
@@ -14,6 +14,7 @@ const API = import.meta.env.VITE_EXPRESSAPI_URL
 // ASSUMPTIONS: only user/login came from your old code. Change these two to your Express routes.
 const REGISTER_ENDPOINT = 'user/register'
 const FORGOT_ENDPOINT = 'user/forgot-password'
+const RESET_ENDPOINT = 'user/reset-password'
 
 /* ---------- helpers ---------- */
 
@@ -204,6 +205,61 @@ export function ForgotPassword() {
                    autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <button type="submit" className="btn btn-dark w-100" disabled={loading}>
               {loading ? 'Sending…' : 'Send reset link'}
+            </button>
+          </form>
+        </>
+      )}
+      <p className="auth-links"><Link to="/login">← Back to sign in</Link></p>
+    </AuthLayout>
+  )
+}
+
+
+/* ---------- /reset-password?token=... (the link in the email) ---------- */
+
+export function ResetPassword() {
+  const navigate = useNavigate()
+  const [params] = useSearchParams()
+  const token = params.get('token')
+  const [password, setPassword] = useState('')
+  const [confirm, setConfirm] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setError('')
+    if (password.length < 8) return setError('Password must be at least 8 characters.')
+    if (password !== confirm) return setError('Passwords do not match.')
+
+    setLoading(true)
+    try {
+      await axios.post(API + RESET_ENDPOINT, { token, password })
+      navigate('/login', { replace: true, state: { notice: 'Password updated. You can sign in now.' } })
+    } catch (err) {
+      setError(err.response?.data?.message || 'Could not reset the password. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <AuthLayout eyebrow="Account / Recovery" title="Choose a new password">
+      <h2 className="auth-heading">Set a new password</h2>
+      {!token ? (
+        <p className="auth-alert auth-alert-error" role="alert">
+          This reset link is incomplete. <Link to="/forgot-password">Request a new one</Link>.
+        </p>
+      ) : (
+        <>
+          {error && <p className="auth-alert auth-alert-error" role="alert">{error}</p>}
+          <form onSubmit={handleSubmit} noValidate>
+            <Field id="password" label="New password" type="password" placeholder="At least 8 characters"
+                   autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Field id="confirm" label="Confirm new password" type="password" placeholder="Repeat password"
+                   autoComplete="new-password" value={confirm} onChange={(e) => setConfirm(e.target.value)} />
+            <button type="submit" className="btn btn-dark w-100" disabled={loading}>
+              {loading ? 'Saving…' : 'Update password'}
             </button>
           </form>
         </>
