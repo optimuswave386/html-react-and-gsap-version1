@@ -2,7 +2,7 @@ import { React } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, NavLink, BrowserRouter } from 'react-router-dom'
 import '../assets/css/main.css' // Import main CSS file
 import Header from '../components/header.jsx'
-import HeaderForAboutPage from '../components/headerforaboutpage.jsx'
+import HeaderForAboutPage from '../components/headerForAboutPage.jsx'
 import Footer from '../components/footer.jsx'
 
 function Interests() {
