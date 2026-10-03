@@ -31,7 +31,7 @@ function HeaderforAboutPage() {
         <p className="about-hero-date diagonal-reveal">{dateLabel}</p>
 
         <h1 className="about-hero-title diagonal-reveal">
-          Hi, I'm <Link to="/about">name</Link> from location.
+          Hi, I'm <Link to="/about">Asad</Link>.
         </h1>
 
         <p className="about-hero-text">
