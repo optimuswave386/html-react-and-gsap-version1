@@ -1,28 +1,279 @@
+/* ===== Résumé page design (div#two.resumepage) ===== */
+.resumepage {
+  /* --r-accent: #0d6efd;
+  --r-accent-soft: #e7f0ff; */
+  --r-accent: var(--random-color);
+  --r-accent-soft: rgba(var(--random-color), 0.15);
+  --r-ink: #1f2933;
+  --r-muted: #6c757d;
+  --r-line: #dde1e6;
+  --r-card: #f6f7f9;
+  text-align: left;
+  color: var(--r-ink);
+  line-height: 1.55; /* overrides the tall line-height set on #two */
+}
+
+/* ---------- Two equal columns ---------- */
+.rcols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+  align-items: start;
+}
+.rcol { min-width: 0; }
+@media (max-width: 991px) {
+  .rcols { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Section headings ---------- */
+.rsection { margin: 0 0 48px; }
+.rsection-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.rsection-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--r-line);
+}
+.rsection-head h3 { margin: 0; font-size: 1.5rem; order: 1; }
+.rsection-head::after { order: 2; }
+.rsection-num {
+  order: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 8px;
+  font-size: .85rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--r-accent);
+  border-radius: 8px;
+}
+.rsmallhead {
+  margin: 0 0 8px;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--r-muted);
+}
+
+/* ---------- 01 Summary ---------- */
+.rlead {
+  margin: 0 0 18px;
+  padding: 4px 0 4px 20px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  border-left: 4px solid var(--r-accent);
+}
+.rsub { margin: 0 0 6px; font-weight: 600; }
+.rbullets {
+  list-style: disc;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+}
+.rbullets li { padding: 2px 0; }
+.rbullets-tight { margin-top: 6px; }
+.rbullets-tight li { padding: 0; font-size: .95rem; }
+
+/* ---------- 02 Key achievements ---------- */
+.rstats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+}
+.rstat {
+  padding: 18px 16px;
+  background: var(--r-accent-soft);
+  border-radius: 12px;
+}
+.rstat-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--r-accent);
+}
+.rstat-label { margin-top: 6px; font-size: .92rem; }
+
+/* ---------- 03 Projects ---------- */
+.rprojects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.rproject {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--r-card);
+  border: 1px solid var(--r-line);
+  border-top: 4px solid var(--r-accent);
+  border-radius: 10px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.rproject:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.12); }
+.rproject h4 { margin: 0 0 8px; font-size: 1.1rem; }
+.rproject p { margin: 0 0 14px; font-size: .95rem; flex: 1; }
+
+/* ---------- Tags / chips ---------- */
+.rtags { display: flex; flex-wrap: wrap; gap: 6px; }
+.rtag {
+  padding: 3px 10px;
+  font-size: .82rem;
+  color: #0a4db3;
+  background: #fff;
+  border: 1px solid #b9d3fb;
+  border-radius: 999px;
+}
+.rtags-lg { gap: 10px; }
+.rtag-lg {
+  padding: 8px 16px;
+  font-size: .95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--r-accent);
+  border-color: var(--r-accent);
+}
+
+/* ---------- 05 Education & trainings ---------- */
+.redu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.rschool {
+  margin-bottom: 16px;
+  padding-left: 16px;
+  border-left: 3px solid var(--r-accent);
+}
+.rschool-date { font-size: .82rem; font-weight: 700; color: var(--r-accent); }
+.rschool-degree { font-size: 1.05rem; font-weight: 700; }
+.rschool-name { color: var(--r-muted); }
+
+.rtrainings { list-style: none; margin: 0; padding: 0; }
+.rtrainings li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--r-line);
+}
+.rtrain-year {
+  flex: 0 0 48px;
+  font-weight: 700;
+  color: var(--r-accent);
+}
+
+/* ---------- 06 Skills ---------- */
+.rskills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px 24px;
+}
+
+/* ---------- Footnote ---------- */
+.rfootnote {
+  margin: 0;
+  padding-top: 16px;
+  color: var(--r-muted);
+  font-size: .92rem;
+  border-top: 1px solid var(--r-line);
+}
+
+/* ===== Timeline: line on the left, cards to the right (fits a half-width column) ===== */
 .timeline {
-    margin: 10px 20px;
-    border-left: 1px solid #ccc;
-    overflow: visible;
+  position: relative;
+  margin: 6px 0 0;
+  padding: 6px 0;
 }
-
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 22px;
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--r-line);
+  border-radius: 2px;
+}
 .timelineevent {
-    display: flex;
-    margin: 20px 0px 0px 10px;
-    padding: 20px;
-    overflow: visible;
+  position: relative;
+  padding: 10px 0;
+  line-height: 1.5;
 }
-
-.timelinestar {  overflow: visible; align-self: center; }
-.timelinestar img { width: 30px; height: 30px;  margin-left: -46px; 
-    background-color: #f3f4f5; 
-    border-radius: 20px; border: 1px solid #ccc;  
-    box-shadow: 0px 0px 5px #aaa; 
+.timelinestar {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 3px solid var(--r-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #fff, 0 3px 8px rgba(0, 0, 0, .25);
 }
-
+.timelinestar img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  object-fit: contain;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
 .timelineeventdetails {
-    background-color: #f3f4f5;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    overflow: hidden;
+  position: relative;
+  margin-left: 56px;
+  text-align: left;
+  background: var(--r-card);
+  border: 1px solid var(--r-line);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
-.timelinedate { display:block; width:100%; padding: 5px; }
-.timelinedescription { display:block; padding: 5px; }
+.timelineeventdetails:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, .15); }
+.timelineeventdetails::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -7px;
+  width: 12px;
+  height: 12px;
+  background: var(--r-accent);
+  border: 1px solid var(--r-accent);
+  border-right: 0;
+  border-top: 0;
+  transform: rotate(45deg);
+}
+.timelinedate {
+  display: block;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--r-accent);
+  border-radius: 9px 9px 0 0;
+  letter-spacing: .5px;
+}
+.timelinetitle { display: block; padding: 12px 16px 0; font-size: 1.1rem; font-weight: 700; }
+.timelinedescription { display: block; padding: 6px 16px 16px; font-size: .95rem; }
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .rsection-head h3 { font-size: 1.25rem; }
+  .rlead { font-size: 1.05rem; }
+}

@@ -127,7 +127,7 @@ body {
 }
 
 #one {
-    border-right: 1px solid #dee2e6;
+    /* border-right: 1px solid #dee2e6; */
     max-width: 100%;
 }
 
