@@ -8,7 +8,7 @@ import QuoteCard_formatted from '../components/quotesCard.jsx'
 // ---------- Resume data: edit content here ----------
 
 const summary =
-  'Versatile IT Professional with over 10 years of cross-functional experience bridging technical development, quality assurance, and stakeholder communication in enterprise projects. Proven track record in translating complex business requirements into scalable software solutions, managing vendor relations, and ensuring high-reliability software delivery. Recently upskilled via the Arkansas ReSkill Program, expanding technical capabilities in cybersecurity architecture, risk analysis, and data analytics. Adept at navigating cross-cultural enterprise environments and collaborating with cross-functional teams to align IT initiatives with core business goals.'
+  'Web designer/developer with a full-stack portfolio spanning Angular + .NET, React/Node/Express/MongoDB, Next.js with Stripe, and Laravel, backed by 10+ years in IT across development, QA and client-facing technical roles. Builds responsive, database-driven applications with user authentication and tested APIs, and uses AI tools (Claude, ChatGPT, Google AI) to speed up development. Associate\'s degree in Computer Information Systems (Cybersecurity); 15 certificates and training programs completed.'
 
 const highlights = [
   '- Acquired a broadened outlook as a non-technical salesperson over ten years',
@@ -22,7 +22,6 @@ const stats = [
   { value: '200+', label: 'end users supported on enterprise projects' },
   { value: '100+', label: 'technical issues resolved in enterprise applications' },
   { value: '99%', label: 'defect resolution rate in quality assurance roles' },
-  { value: '5+', label: 'academic institutions of coursework in IT, cybersecurity and emerging tech' },
 ]
 
 const projects = [
@@ -49,34 +48,46 @@ const projects = [
 // Timeline - newest first (original content)
 const experience = [
   {
-    date: '2025 – present',
+    date: '2019 – present',
     title: 'Freelance Web Designer / Developer',
     description:
       'A self-employed professional who creates, designs, builds, and maintains websites for different clients. They combine creative skills to make websites visually appealing and user-friendly with technical skills to ensure the websites function properly. Freelancers may work with businesses, individuals, or organizations and are typically paid per project, by the hour, or through ongoing maintenance services.',
   },
   {
-    date: '2019 – 2024',
-    title: 'IS Analyst (Information Support Analyst)',
-    description:
-      "Bridges the gap between business needs and technology, focusing on designing, implementing, maintaining, and troubleshooting an organization's IT infrastructure, including hardware, software, and networks, to ensure smooth operations, resolve user issues, and support strategic tech goals. The role involves technical support, system analysis, user training, and working with developers and management to enhance IT performance and security.",
-  },
-  {
-    date: '2013 – 2018',
+    date: '2013 – 2019',
     title: 'Sales Assistant',
     description:
       'Buys/sells computers, software, phones, and related services in retail/wholesale, focusing on customer needs, demonstrating products (like internet plans, mobile accessories), handling transactions, managing stock/displays, and providing basic technical advice to ensure customer satisfaction with their tech purchases. They are the frontline, connecting customers with the right hardware and services, explaining features, and keeping the store stocked and presentable, often bridging the gap between complex tech and everyday users.',
   },
   {
-    date: '2009 – 2012',
+    date: '2011 – 2012',
+    title: 'Technical Support Engineer',
+    description:
+      "A professional who provides assistance and troubleshooting for technical issues related to software, hardware, or IT systems. They help users resolve problems, answer questions, and ensure that technology functions smoothly. Technical Support Engineers may work in various industries, including IT services, software development, and telecommunications, and they often communicate with customers via phone, email, or chat to provide solutions and guidance.",
+  }, 
+  {
+    date: '2009 – 2010',
     title: 'Web and Systems Engineer',
     description:
       "Responsible for designing, developing, and maintaining an organization's web applications and IT systems. They ensure websites are functional, user-friendly, and secure while managing servers, databases, and network infrastructure to support overall business operations. Their role combines web development skills with system administration to optimize performance and reliability.",
   },
   {
-    date: '2005 – 2008',
+    date: '2007 – 2009',
     title: 'QA Analyst',
     description:
       'Ensures that software products meet quality standards and function as intended by designing and executing test plans, identifying bugs, and collaborating with developers to resolve issues. They play a crucial role in maintaining the reliability and performance of applications before they reach end-users. They focus on both manual and automated testing to validate functionality, usability, and security. They also document test results and contribute to continuous improvement processes within the development lifecycle.',
+  },
+  {
+    date: '2005 – 2007',
+    title: 'Programmer / Analyst',
+    description:
+      'A professional who combines programming skills with analytical thinking to design, develop, and maintain software applications. They analyze user requirements, create technical specifications, write code, and test software to ensure it meets functional and performance standards. Programmer/Analysts often work closely with stakeholders to understand business needs and translate them into effective software solutions, bridging the gap between technical development and practical application.',
+  },
+  {
+    date: '2005',
+    title: 'Interactive Multimedia Developer',
+    description:
+      'A professional who creates engaging digital content that combines text, graphics, audio, video, and interactive elements. They design and develop multimedia applications, such as websites, e-learning modules, games, and presentations, using various software tools and programming languages. Interactive Multimedia Developers focus on user experience, ensuring that the content is visually appealing, functional, and interactive. They often collaborate with designers, programmers, and content creators to deliver immersive digital experiences.',
   },
   {
     date: '2001 – 2004',
@@ -122,11 +133,11 @@ const skills = [
   { label: 'Languages', items: ['Java/JavaScript', 'PHP/ASP/C#', 'VBScript', 'dotnet (.NET)', 'React (Nodejs)'] },
   { label: 'Cloud Technologies', items: ['Google Cloud', 'BigQuery', 'Oracle Express'] },
   { label: 'Databases', items: ['MySQL', 'MongoDB', 'SQL Server', 'PostgreSQL'] },
-  { label: 'Agile & Scrum', items: ['JIRA', 'Trello', 'ChatGPT', 'Claude', 'Google AI'] },
+  { label: 'Agile & Scrum', items: ['JIRA', 'Trello'] },
   { label: 'Data Analytics', items: ['Python', 'Power BI (PivotTables, Power Query, dashboards)'] },
   { label: 'Networking', items: ['Wireshark', 'Cisco IOS', 'Git', 'Docker', 'Postman', 'Terminal (Mac)'] },
   { label: 'Operating Systems', items: ['Apple Mac', 'Linux/Unix', 'Windows'] },
-  { label: 'Tools', items: ['Microsoft Office (Word, Excel, Powerpoint)', 'Google Apps'] },
+  { label: 'Tools', items: ['Microsoft Office (Word, Excel, Powerpoint)', 'Google Apps', 'ChatGPT', 'Claude', 'Google AI'] },
 ]
 
 const expertise = [
@@ -250,12 +261,27 @@ function MyResume() {
                   </div>
                 </Section>
 
+                <Section num="05" title="Technical Skills">
+                  <div className="rskills">
+                    {skills.map((g) => (
+                      <div className="rskillgroup" key={g.label}>
+                        <h4 className="rsmallhead">{g.label}</h4>
+                        <div className="rtags">
+                          {g.items.map((i) => (
+                            <span className="rtag" key={i}>{i}</span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Section>
+
               </div>
 
               {/* ---------- Right column ---------- */}
               <div className="rcol">
 
-                <Section num="05" title="Professional Experience">
+                <Section num="06" title="Professional Experience">
                   <div className="timeline">
                     {experience.map((job) => (
                       <div className="timelineevent" key={job.date}>
@@ -266,21 +292,6 @@ function MyResume() {
                           <div className="timelinedate">{job.date}</div>
                           <div className="timelinetitle">{job.title}</div>
                           <div className="timelinedescription">{job.description}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </Section>
-
-                <Section num="06" title="Technical Skills">
-                  <div className="rskills">
-                    {skills.map((g) => (
-                      <div className="rskillgroup" key={g.label}>
-                        <h4 className="rsmallhead">{g.label}</h4>
-                        <div className="rtags">
-                          {g.items.map((i) => (
-                            <span className="rtag" key={i}>{i}</span>
-                          ))}
                         </div>
                       </div>
                     ))}
