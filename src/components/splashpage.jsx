@@ -50,7 +50,7 @@ function SplashPage() {
             </Link>
           ))}
         </nav>
-
+          
         <div className="splash-about">
           <h2 className="splash-about-label">About the creator</h2>
           <p>
@@ -59,7 +59,7 @@ function SplashPage() {
         </div>
 
         <p className="splash-foot">
-          The dashboard and orders are available once you <Link to="/login">sign in</Link>. Any questions? <Link to="/helpcenter">Ask here</Link>.
+          The products are available to purchase once you <Link to="/login">sign in</Link>. Any questions? <Link to="/helpcenter">Ask here</Link>.
         </p>
       </div>
     </section>
